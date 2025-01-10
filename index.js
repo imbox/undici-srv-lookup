@@ -20,7 +20,7 @@ module.exports = function createSrvLookup (resolver = new Resolver()) {
               address: record.address,
               family: 4,
               port: srv.port,
-              ttl: record.ttl ?? opts.maxTTL,
+              ttl: record.ttl ? record.ttl * 1_000 : opts.maxTTL,
             })
           }
         } catch (err) {
