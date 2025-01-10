@@ -7,5 +7,5 @@ expectType<interceptors.DNSInterceptorOpts['lookup']>(
   createSrvLookup()
 )
 expectType<interceptors.DNSInterceptorOpts['lookup']>(
-  createSrvLookup(new Resolver())
+  createSrvLookup({ resolver: new Resolver() })
 )

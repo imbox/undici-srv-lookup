@@ -42,7 +42,7 @@ test('lookup', async t => {
     interceptors.dns({
       dualStack: false,
       affinity: 4,
-      lookup: createSrvLookup(resolver)
+      lookup: createSrvLookup({ resolver })
     })
   ])
 

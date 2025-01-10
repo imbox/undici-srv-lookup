@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "node --test test/srv.js",
-    "test:typescript": "tsd"
+    "test:typescript": "tsd",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
   },
   "keywords": [],
   "author": "ImBox Sweden AB",
@@ -14,6 +16,7 @@
     "@types/node": "^22.10.2",
     "eslint": "^9.16.0",
     "neostandard": "^0.12.0",
+    "pino": "^9.6.0",
     "tsd": "^0.31.2",
     "undici": "^7.1.0"
   },

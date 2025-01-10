@@ -2,7 +2,7 @@
 const { Resolver } = require('node:dns/promises')
 const { callbackify } = require('node:util')
 
-module.exports = function createSrvLookup (resolver = new Resolver()) {
+module.exports = function createSrvLookup ({ resolver = new Resolver(), logger = null } = {}) {
   return callbackify(async (origin, opts) => {
     const srvs = await resolver.resolveSrv(origin.hostname)
     if (srvs.length === 0) {
@@ -15,6 +15,9 @@ module.exports = function createSrvLookup (resolver = new Resolver()) {
       srvs.map(async (srv) => {
         try {
           const records = await resolver.resolve4(srv.name, { ttl: true })
+          if (logger) {
+            logger.debug('resolved srv %o -> records %o', srv, records)
+          }
           for (const record of records) {
             addresses.push({
               address: record.address,
