@@ -6,6 +6,7 @@ module.exports = function createSrvLookup ({ resolver = new Resolver(), logger =
   return callbackify(async (origin, opts) => {
     const srvs = await resolver.resolveSrv(origin.hostname)
     if (srvs.length === 0) {
+      logger?.debug('%s resolved no srvs', origin.hostname)
       return []
     }
 
@@ -31,7 +32,7 @@ module.exports = function createSrvLookup ({ resolver = new Resolver(), logger =
       })
     )
 
-    logger?.debug('%s resolved addresses: %o', origin.hostname, addresses)
+    logger?.debug('%s resolved srvs %o\naddresses: %o', origin.hostname, srvs, addresses)
 
     if (addresses.length === 0 && errors.length > 0) {
       throw new AggregateError(errors)
