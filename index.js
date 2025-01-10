@@ -15,9 +15,6 @@ module.exports = function createSrvLookup ({ resolver = new Resolver(), logger =
       srvs.map(async (srv) => {
         try {
           const records = await resolver.resolve4(srv.name, { ttl: true })
-          if (logger) {
-            logger.debug('resolved srv %o -> records %o', srv, records)
-          }
           for (const record of records) {
             addresses.push({
               address: record.address,
@@ -33,6 +30,8 @@ module.exports = function createSrvLookup ({ resolver = new Resolver(), logger =
         }
       })
     )
+
+    logger?.debug('%s resolved addresses: %o', origin.hostname, addresses)
 
     if (addresses.length === 0 && errors.length > 0) {
       throw new AggregateError(errors)
