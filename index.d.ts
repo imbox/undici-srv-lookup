@@ -3,5 +3,9 @@ import { Logger } from 'pino'
 import { interceptors } from 'undici'
 
 export default function createSrvLookup (
-  opts?: { resolver?: Resolver, logger?: Logger }
+  opts?: {
+    resolver?: Resolver,
+    logger?: Logger,
+    dedupe?: boolean
+  }
 ): interceptors.DNSInterceptorOpts['lookup']
