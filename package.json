@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "ImBox Sweden AB",
-  "license": "ISC",
+  "license": "MIT",
   "description": "Resolve addresses for undici via SRV records",
   "devDependencies": {
     "@types/node": "^22.10.2",
