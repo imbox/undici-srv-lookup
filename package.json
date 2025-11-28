@@ -1,7 +1,15 @@
 {
-  "name": "undici-srv-lookup",
+  "name": "@imbox/undici-srv-lookup",
   "version": "2.1.0",
   "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.d.ts",
+    "index.js",
+    "package.json"
+  ],
   "scripts": {
     "test": "node --test-concurrency 1 test/srv.js",
     "test:typescript": "tsd",
